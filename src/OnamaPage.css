@@ -1,0 +1,277 @@
+.onama-page-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 40px;
+    color: #fff;
+}
+
+.about-intro-section {
+    text-align: center;
+    margin-bottom: 100px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.about-intro-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.about-intro-section p {
+    font-size: 1.1rem;
+    color: #c0c0c0;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+    margin-bottom: 120px;
+}
+
+.stat-item {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #2e2e2e;
+}
+
+.stat-item h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #9d224e;
+    margin: 0 0 10px 0;
+}
+
+.stat-item p {
+    font-size: 1rem;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+.about-team-section {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.about-team-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-team-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.team-carousel-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.scroll-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+.scroll-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.scroll-btn.prev { left: -20px; }
+.scroll-btn.next { right: -20px; }
+
+.team-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    width: 280px;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.about-team-section.visible .team-card:nth-child(1) { animation-delay: 0.2s; }
+.about-team-section.visible .team-card:nth-child(2) { animation-delay: 0.4s; }
+
+.team-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: rgba(157, 34, 78, 0.5);
+    box-shadow: 0 0 25px rgba(157, 34, 78, 0.3);
+}
+
+.team-member-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #333;
+}
+
+.team-card h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+
+.team-card p {
+    font-size: 1rem;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+.about-faq-section {
+    max-width: 800px;
+    margin: 0 auto 120px auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.about-faq-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-faq-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.faq-item {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #2e2e2e;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.faq-icon {
+    fill: #fff;
+    transition: transform 0.3s ease-in-out;
+    min-width: 24px;
+}
+.faq-item.open .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer-container {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-in-out;
+}
+.faq-item.open .faq-answer-container {
+    grid-template-rows: 1fr;
+}
+.faq-answer {
+    overflow: hidden;
+}
+.faq-answer p {
+    padding: 0 25px 25px 25px;
+    margin: 0;
+    color: #a0a0a0;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .onama-page-container {
+        padding: 0; 
+    }
+
+    .about-intro-section,
+    .about-stats-section,
+    .about-faq-section {
+        padding: 0 20px; 
+    }
+
+    .about-stats-section {
+        grid-template-columns: 1fr;
+    }
+    .about-intro-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .team-carousel-wrapper {
+        position: relative;
+        width: 100%;
+        padding: 20px 0;
+    }
+    
+    .scroll-btn {
+        display: block;
+    }
+    .scroll-btn.prev { left: 10px; }
+    .scroll-btn.next { right: 10px; }
+
+    .team-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .team-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .team-card {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+    
+    .team-grid .team-card:first-child {
+        margin-left: 450px;
+    }
+
+    .team-grid .team-card:last-child {
+        margin-right: 40px;
+    }
+}
+

@@ -1,0 +1,119 @@
+.auth-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 40px;
+}
+
+.auth-card {
+    background-color: #1a1a1a;
+    padding: 40px 50px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2e2e2e;
+    overflow: hidden;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.7s 0.2s ease-out forwards;
+}
+
+.auth-form-container {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.auth-card.animating .auth-form-container {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group svg {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: #a0a0a0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #9d224e;
+    box-shadow: 0 0 0 4px rgba(157, 34, 78, 0.3);
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin: -15px 0 25px 0;
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    text-decoration: none;
+}
+.forgot-password:hover {
+    color: #fff;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #9d224e;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.auth-btn:hover {
+    background-color: #b3285a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(157, 34, 78, 0.25);
+}
+
+.auth-switcher {
+    text-align: center;
+    margin-top: 25px;
+    color: #a0a0a0;
+}
+.auth-switcher button {
+    background: none;
+    border: none;
+    color: #9d224e;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 5px;
+}
+.auth-switcher button:hover {
+    text-decoration: underline;
+}
