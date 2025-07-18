@@ -1,12 +1,41 @@
-# React + Vite
+# Parfemistika
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Projekat za predmet: Interakcija čovjek i računar ETF UNSA 2024/25**
 
-Currently, two official plugins are available:
+## 📜 Uvod
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Parfemistika je moderna, interaktivna web aplikacija koja korisnicima omogućava da dizajniraju sopstveni, jedinstveni parfem. Kroz vođeno iskustvo, korisnici mogu da istraže različite mirisne note, da odgovore na pitanja u personalizovanom kvizu, i na kraju dobiju preporuku za parfem koji savršeno odgovara njihovoj ličnosti i stilu.
 
-## Expanding the ESLint configuration
+Projekat je frontend-only aplikacija. Fokus je stavljen na fluidno korisničko iskustvo, intuitivnu navigaciju i vizuelno privlačne, moderne animacije. Svi podaci su hardkodirani.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Korišćene Tehnologije
+
+-   **Framework:** React
+-   **Build Alat:** Vite
+-   **Rutiranje:** React Router DOM
+-   **State Management:** React Context API (za korpu)
+-   **Stilizacija:** Čist CSS
+
+## 🚀 Pokretanje Projekta
+
+Za pokretanje projekta lokalno, pratite sledeće korake:
+
+1.  **Klonirajte repozitorijum:**
+    ```bash
+    git clone https://github.com/tvoj-username/parfemistika.git
+    ```
+2.  **Uđite u folder projekta:**
+    ```bash
+    cd parfemistika
+    ```
+3.  **Instalirajte zavisnosti:**
+    ```bash
+    npm install
+    ```
+4.  **Pokrenite razvojni server:**
+    ```bash
+    npm run dev
+    ```
+
+---
+
