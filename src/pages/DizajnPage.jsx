@@ -12,6 +12,8 @@ import kruskaImg from '../assets/kruska.png';
 import kedarImg from '../assets/kedrovina.png';
 import oudImg from '../assets/oud.png';
 
+// === PODACI I POMOĆNE KOMPONENTE SU SADA IZVAN GLAVNE KOMPONENTE ===
+
 const noteCategories = [
     {
         title: "Amber & Začinjeno",
@@ -90,12 +92,15 @@ const PriceCounter = ({ endValue }) => {
 }
 
 
+// === GLAVNA KOMPONENTA POČINJE OVDE ===
+
 const DizajnPage = () => {
     const [selectedNote, setSelectedNote] = useState(null);
     const [selectedSecondaryNote, setSelectedSecondaryNote] = useState(null);
     const [recommendedNotes, setRecommendedNotes] = useState([]);
     const [showRecommendations, setShowRecommendations] = useState(false);
     const [showSummary, setShowSummary] = useState(false);
+    const [showTip, setShowTip] = useState(true);
     const { addToCart } = useCart();
     const navigate = useNavigate();
 
@@ -104,6 +109,7 @@ const DizajnPage = () => {
 
     const handleNoteSelect = (note) => {
         setSelectedNote(note);
+        setShowTip(false);
         setSelectedSecondaryNote(null);
         setShowSummary(false);
         generateRecommendations(note);
@@ -136,6 +142,14 @@ const DizajnPage = () => {
         }
     }, [showSummary]);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowTip(false);
+        }, 5000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     const handleAddToCart = () => {
         if (!selectedNote || !selectedSecondaryNote) return;
 
@@ -154,7 +168,7 @@ const DizajnPage = () => {
         <div className="design-page-container">
             <h1 className="design-page-title">Odaberite glavnu notu</h1>
             <div className="design-grid">
-                {noteCategories.map(category => (
+                {noteCategories.map((category, categoryIndex) => (
                     <div 
                         key={category.title} 
                         className="note-category-card"
@@ -162,14 +176,19 @@ const DizajnPage = () => {
                     >
                         <h2>{category.title}</h2>
                         <div className="notes-container">
-                            {category.notes.map(note => (
+                            {category.notes.map((note, noteIndex) => (
                                 <div key={note.name} className="note-item">
-                            <div
-                                className={`note-image-container ${selectedNote?.name === note.name ? 'selected' : ''}`} // Dodao sam '?' za sigurnost
+                                <div
+                                className={`note-image-container ${selectedNote?.name === note.name ? 'selected' : ''}`}
                                 onClick={() => handleNoteSelect(note)}
-                            >
+                                >
                                 <img src={note.img} alt={note.name} />
-                            </div>
+                                </div>
+    
+                                {/* === "TIP" JE SADA VAN .note-image-container === */}
+                                <div className="selection-tip">
+                                    <div className="tip-arrow">←</div>⠀Odaberi 
+                                </div>
                                     <div className="note-details">
                                         <h3>{note.name}</h3>
                                         <p>{note.desc}</p>
@@ -187,7 +206,8 @@ const DizajnPage = () => {
                     </div>
                 ))}
             </div>
-        {selectedNote && (
+
+            {selectedNote && (
                 <div 
                     ref={recommendationsRef} 
                     className={`recommendations-section ${showRecommendations ? 'visible' : ''}`}

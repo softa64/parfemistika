@@ -23,23 +23,51 @@
     border-radius: 20px;
     position: relative;
     overflow: hidden; 
-    transition: transform 0.3s ease-in-out;
+    
+    /* === IZMENA: Duža i uglađenija tranzicija === */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* Omogućava 3D transformacije za decu */
+    transform-style: preserve-3d;
 }
 
 .note-category-card:hover {
-    transform: translateY(-10px);
+    /* === IZMENA: Dodajemo blagu 3D rotaciju na hover === */
+    transform: translateY(-10px) perspective(1000px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* Pojačana senka za dubinu */
 }
 
+/* === NOVO: Animirani sjaj na hover === */
+.note-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+    transform: skewX(-25deg);
+    transition: left 0.8s ease;
+    z-index: 1; /* Postavljamo ga ispod teksta ali iznad pozadine */
+}
+.note-category-card:hover::before {
+    left: 150%;
+}
 
 .note-category-card h2 {
     font-size: 1.8rem;
     margin-bottom: 40px;
+    position: relative; /* Potrebno da bi tekst bio iznad sjaja */
+    z-index: 2;
+    transform: translateZ(40px); /* 3D efekat teksta */
 }
 
 .notes-container .note-item {
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    transform: translateZ(20px);
 }
 
 .notes-container .note-item:not(:last-child) {
@@ -55,6 +83,8 @@
     cursor: pointer;
     border: 3px solid transparent;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+     
 }
 
 .note-image-container:hover {
@@ -71,6 +101,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.note-category-card:hover .note-image-container img {
+    transform: scale(1.2) translateX(-15px);
 }
 
 .note-details h3 {
@@ -285,6 +320,59 @@
   background-color: #b3285a;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(157, 34, 78, 0.25);
+}
+
+@keyframes arrow-move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+    100% { transform: translateX(0); }
+}
+
+.selection-tip {
+    position: absolute;
+    /* Pozicionira se u odnosu na .note-item */
+    top: 50px; /* Centriramo ga vertikalno u odnosu na sliku (visina slike je 100px) */
+    left: 100px; /* Pomeramo ga desno do ivice slike (širina slike je 100px) */
+    transform: translateY(-50%); /* Fino podešavanje vertikalnog centriranja */
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    
+    z-index: 10;
+    pointer-events: none;
+
+    /* Početno stanje: nevidljiv i pomeren */
+    opacity: 0;
+    transform: translateY(-50%) translateX(-15px);
+    transition: all 0.3s ease-out;
+}
+
+/* Kada korisnik pređe mišem preko CELOG .note-item, tip se pojavljuje */
+.note-item:hover .selection-tip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.tip-arrow {
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.note-item:hover .tip-arrow {
+    transform: translateX(5px);
 }
 
 @media (max-width: 1200px) {

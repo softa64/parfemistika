@@ -674,7 +674,7 @@ body.no-scroll {
     
     .testimonial-content {
       padding-right: 0; 
-    }
+    }   
     
     .testimonial-icon {
       position: static; 
@@ -715,6 +715,7 @@ body.no-scroll {
   cursor: pointer;
   border: 3px solid transparent;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative; 
 }
 
 .note-image-container:hover {

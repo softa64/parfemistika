@@ -40,3 +40,40 @@
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
+
+/* === NOVO: Stilovi za akcije unutar modala === */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Stil za "Odustani" dugme */
+.cancel-btn {
+    background-color: #333;
+    color: #fff;
+}
+.cancel-btn:hover {
+    background-color: #444;
+}
+
+/* Stil za "Potvrdi" (brisanje) dugme */
+.confirm-btn {
+    background-color: #d62e1c; /* Crvena boja za upozorenje */
+    color: #fff;
+}
+.confirm-btn:hover {
+    background-color: #e54e3e;
+    transform: translateY(-2px);
+}
